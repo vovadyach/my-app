@@ -15,7 +15,6 @@ class App extends Component {
   }
 
   switchNameHandler = (newName) => {
-    // console.log("was clicked!");
     this.setState({
       persons: [
         { name: newName, age: 30 },
@@ -52,30 +51,32 @@ class App extends Component {
       cursor: 'pointer'
     }
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name} age={this.state.persons[0].age} />
+          <Person
+            changed={this.nameChangeHandler}
+            click={this.switchNameHandler.bind(this, "Volodymyr")}
+            name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies: Soccer</Person>
+          <Person
+            name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1> Hi, I am a react app</h1>
         <button
           style={style}
           onClick={this.togglePersons}>Toggle Persons</button>
-        {
-          this.state.showPersons ?
-            <div>
-              <Person
-                name={this.state.persons[0].name} age={this.state.persons[0].age} />
-              <Person
-                changed={this.nameChangeHandler}
-                click={this.switchNameHandler.bind(this, "Volodymyr")}
-                name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbies: Soccer</Person>
-              <Person
-                name={this.state.persons[2].name} age={this.state.persons[2].age} />
-            </div> : null
-        }
+        { persons }
       </div>
     );
-
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, " Hi, I'm a react app"));
-
   }
 }
 
