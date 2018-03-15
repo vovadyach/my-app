@@ -3,7 +3,7 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends   Component {
+class App extends Component {
     constructor(props) {
         super(props);
         console.log('[App.js] Inside Conctructor', props);
@@ -33,7 +33,9 @@ class App extends   Component {
             { id: 'bb2', name: "Slava", age: 33 },
             { id: 'cc3', name: "Lena", age: 32 }
         ],
-        showPersons: false
+        showPersons: false,
+        toggleClicked: 0
+
     }
 
     deletePersonHandler = (personIndex) => {
@@ -63,8 +65,12 @@ class App extends   Component {
     togglePersons = () => {
         const doesShow = this.state.showPersons;
 
-        this.setState({
-            showPersons: !doesShow
+        this.setState((prevState, props) => {
+            return {
+
+                showPersons: !doesShow,
+                toggleClicked: prevState.toggleClicked + 1
+            }
         });
     }
 
