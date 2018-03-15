@@ -9,6 +9,13 @@ class App extends Component {
         console.log('[App.js] Inside Conctructor', props);
     }
 
+    componentWillMount() {
+        console.log('[App.js] Inside componentWillMount()');
+    }
+    componentDidMount() {
+        console.log('[App.js] Inside componentDidMount()');
+    }
+
     state = {
         persons: [
             { id: 'aa1', name: "Vova", age: 30 },
@@ -51,6 +58,7 @@ class App extends Component {
     }
 
     render() {
+        console.log('[App.js] Inside render()');
         let persons = null;
 
         if (this.state.showPersons) {
