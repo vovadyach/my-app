@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Person from './Person/Person';
 
@@ -41,10 +42,18 @@ class Persons extends Component {
                 click={() => this.props.clicked(index)}
                 name={person.name}
                 age={person.age}
+                position={index}
                 key={person.id}
                 changed={(event) => this.props.changed(event, person.id)} />
         });
     }
 }
+
+Person.propTypes = {
+    clicked: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
+};
 
 export default Persons;
