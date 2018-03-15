@@ -19,8 +19,8 @@ class App extends Component {
 
     shouldComponentUpdate(nextProps, nexState) {
         console.log('[Update App.js] Inside shouldComponentUpdate()', nextProps, nexState);
-        return nextProps.persons !== this.state.persons || 
-                nexState.showPersons !== this.state.showPersons;
+        return nextProps.persons !== this.state.persons ||
+            nexState.showPersons !== this.state.showPersons;
     }
 
     componentWillUpdate(nextProps, nexState) {
