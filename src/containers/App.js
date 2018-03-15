@@ -12,8 +12,19 @@ class App extends Component {
     componentWillMount() {
         console.log('[App.js] Inside componentWillMount()');
     }
+
     componentDidMount() {
         console.log('[App.js] Inside componentDidMount()');
+    }
+
+    shouldComponentUpdate(nextProps, nexState) {
+        console.log('[Update App.js] Inside shouldComponentUpdate()', nextProps, nexState);
+        return nextProps.persons !== this.state.persons || 
+                nexState.showPersons !== this.state.showPersons;
+    }
+
+    componentWillUpdate(nextProps, nexState) {
+        console.log('[Update App.js] Inside componentWillUpdate()', nextProps, nexState);
     }
 
     state = {
@@ -71,6 +82,7 @@ class App extends Component {
 
         return (
             <div className={classes.App}>
+                <button onClick={() => this.setState({ showPersons: true })}>Show Persons</button>
                 <Cockpit
                     appTitle={this.props.title}
                     showPersons={this.state.showPersons}
